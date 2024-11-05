@@ -1,0 +1,28 @@
+{
+	"name": "LandingZoneContainer-local",
+	"build":{
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+	"workspaceMount": "source=${localWorkspaceFolder},target=/code,type=bind,consistency=cached",
+	"workspaceFolder": "/code",
+	"postCreateCommand": "cp /code/test_key ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa && ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts && pip3 install --no-cache-dir -r requirements.txt",
+	"runArgs": ["--env-file", ".env"],
+	"customizations": {
+    "vscode": {
+        "extensions":[
+			"ms-python.python", 
+			"ms-python.debugpy",
+			"njpwerner.autodocstring",
+			"ms-python.black-formatter",
+			"batisteo.vscode-django",
+			"GitHub.copilot",
+			"GitHub.copilot-chat",
+			"eamodio.gitlens",
+			"ms-python.vscode-pylance",
+			"donjayamanne.python-environment-manager",
+			"mgesbert.python-path"
+		]
+    }
+}
+}
